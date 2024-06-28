@@ -34,6 +34,18 @@ Int -> String -> Bool
 Char
 ```
 である。
+また、複数の引数をとる関数の型は、次のように考えることができる。
+```haskell
+Int -> (String -> Bool)
+```
+`(` `)`で囲むことにより、囲まれた範囲は1つの関数の型として扱われる。
+つまり、`Int`型の値を受け取り、「`String`型の値を受け取り`Bool`型の値を返す関数」を返す関数の型である。
+加えて、
+```haskell
+(Int -> String) -> Bool
+```
+これは、「`Int`型の値を受け取り、`String`型の値を返す関数」を受け取り、`Bool`型の値を返す関数の型である。
+このような、関数を返す、または、関数を引数として取る関数のことを、高階関数 (higher-order function) と呼ぶ。
 ### 問題
 1. `Int`型、`Int`型、`Int`型の値を受け取り、`String`型の値を返す関数の型を記述せよ。
 <details>
@@ -46,7 +58,7 @@ Int -> Int -> Int -> String
 
 2. `String`型の値を受け取り、何も返さない (値なし) 関数の型を記述せよ。
 <details>
-<summary>回答</summary>
+<summary>解答</summary>
 
 ```haskell
 String -> ()
@@ -55,9 +67,22 @@ String -> ()
 
 3. `Double`型の定数の型を記述せよ。
 <details>
-<summary>回答</summary>
+<summary>解答</summary>
 
 ```haskell
 Double
+```
+</details>
+
+4. 2つの関数`String -> Bool`を受け取り、関数`Int -> Int -> ()`を返す関数の型を記述せよ。
+<details>
+<summary>解答</summary>
+
+```haskell
+(String -> Bool) -> (String -> Bool) -> (Int -> Int -> ())
+```
+または
+```haskell
+(String -> Bool) -> (String -> Bool) -> Int -> Int -> ()
 ```
 </details>
