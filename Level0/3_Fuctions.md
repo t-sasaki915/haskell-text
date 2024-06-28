@@ -56,7 +56,7 @@ concat a b c = a ++ b ++ c
 <summary>回答例</summary>
 
 ```haskell
-identity :: Bool
+identity :: Bool -> Bool
 identity a = a
 ```
 </details>
