@@ -22,53 +22,53 @@ add a b = a + b
 
 ### 問題
 1. 2つの`Double`型の値を受け取り、引き算を行う関数`subtract`を定義せよ。戻り値の型は`Double`である。
-<details>
-<summary>回答例</summary>
+   <details>
+   <summary>解答例</summary>
 
-```haskell
-subtract :: Double -> Double -> Double
-subtract a b = a - b
-```
+   ```haskell
+   subtract :: Double -> Double -> Double
+   subtract a b = a - b
+   ```
 </details>
 
 2. 問題1の`subtract`関数を、引数のラベルをそれぞれ`p`、`q`に変更して再定義せよ。
-<details>
-<summary>回答</summary>
+   <details>
+   <summary>解答</summary>
 
-```haskell
-subtract :: Double -> Double -> Double
-subtract p q = p - q
-```
+   ```haskell
+   subtract :: Double -> Double -> Double
+   subtract p q = p - q
+   ```
 </details>
 
 3. 3つの`String`型の値を受け取り、それらを連結する関数`concat`を定義せよ。ただし、`String`の連結には`++`を用い、戻り値の型は`String`である。
-<details>
-<summary>回答例</summary>
+   <details>
+   <summary>解答例</summary>
 
-```haskell
-concat :: String -> String -> String -> String
-concat a b c = a ++ b ++ c
-```
+   ```haskell
+   concat :: String -> String -> String -> String
+   concat a b c = a ++ b ++ c
+   ```
 </details>
 
 4. 1つの`Bool`型の値を受け取り、それをそのまま返す関数`identity`を、戻り値の型を推測して定義せよ。
-<details>
-<summary>回答例</summary>
+   <details>
+   <summary>解答例</summary>
 
-```haskell
-identity :: Bool -> Bool
-identity a = a
-```
+   ```haskell
+   identity :: Bool -> Bool
+   identity a = a
+   ```
 </details>
 
 5. 円周率を表す定数`pi`を定義せよ。ただし、円周率には`3.14`を用い、その型は`Double`である。
-<details>
-<summary>回答</summary>
+   <details>
+   <summary>解答</summary>
 
-```haskell
-pi :: Double
-pi = 3.14
-```
+   ```haskell
+   pi :: Double
+   pi = 3.14
+   ```
 </details>
 
 
@@ -88,40 +88,101 @@ f (1 + 1) (f 1 2)
 
 ### 問題
 1. 関数`f`に、値`"aaa"`、`True`、`1.0`を順番に適用せよ。
-<details>
-<summary>回答</summary>
+   <details>
+   <summary>解答</summary>
 
-```haskell
-f "aaa" True 1.0
-```
+   ```haskell
+   f "aaa" True 1.0
+   ```
 </details>
 
 2. 関数`f`に、`a + b`と`c + d`の計算結果を適用せよ。
-<details>
-<summary>回答</summary>
+   <details>
+   <summary>解答</summary>
 
-```haskell
-f (a + b) (c + d)
-```
+   ```haskell
+   f (a + b) (c + d)
+   ```
 </details>
 
 3. 関数`f`に、「関数`g`に`1`を適用した結果」と「関数`h`に`"aaa"`を適用した結果」を適用せよ。
-<details>
-<summary>回答</summary>
+   <details>
+   <summary>解答</summary>
 
-```haskell
-f (g 1) (h "aaa")
-```
+   ```haskell
+   f (g 1) (h "aaa")
+   ```
 </details>
 
 4. 2つの`Int`型の値を受け取り、それらを`add`関数に適用し、その結果に`1`を加える関数`add'`を定義せよ。戻り値の型は`Int`である。
-<details>
-<summary>回答例</summary>
+   <details>
+   <summary>解答例</summary>
 
+   ```haskell
+   add' :: Int -> Int -> Int
+   add' a b = (add a b) + 1
+   ```
+</details>
+
+## ポーランド記法と中置記法
+関数への値の適用に際して、Haskellには2つの記法が用意されている。
+1つは、`関数名 引数1 引数2 ...`の形をとるポーランド記法である。
 ```haskell
-add' :: Int -> Int -> Int
-add' a b = (add a b) + 1
+f a b
+add a b
 ```
+もう1つは、`引数1 関数名 引数2 ...`の形をとる中置記法である。
+```haskell
+a + b
+a == b
+```
+__**注意**__ Haskellでは、`+`や`==`といった記号は演算子ではなく、関数である。<br>
+上記の例からわかる通り、ポーランド記法を使うべき場面、中置記法を使うべき場面は簡単に見分けることができる。
+しかし、Haskellでは記法を変えて書くことができる。
+```haskell
+a `f` b   -- f a b と等価
+a `add` b -- add a b と等価
+```
+```haskell
+(+) a b  -- a + b と等価
+(==) a b -- a == b と等価
+```
+アルファベットで構成された関数名を中置記法で記述する場合、関数名を&#96; &#96;で囲む必要がある。
+また、記号で構成された関数名をポーランド記法で記述する場合、関数名を`(` `)`で囲む必要がある。
+このような表記は可読性を下げる原因になりえるし、特に演算をポーランド記法で書く行為は、Lispプログラマ以外には非直感的であろう。
+ただし、適切に使用すると、複雑な式を極めてシンプルにまとめることができるから、覚えておいて損はないだろう。
+
+### 問題
+1. `g 1`は何の記法で記述されているか。ポーランド記法または中置記法で解答せよ。また、関数名を答えよ。
+   <details>
+   <summary>解答</summary>
+
+   ポーランド記法、関数名は`g`
+</details>
+
+2. `a >= b`は何の記法で記述されているか。ポーランド記法または中置記法で解答せよ。また、関数名を答えよ。
+   <details>
+   <summary>解答</summary>
+
+   中置記法、関数名は`>=`
+</details>
+
+3. `g "aaa" "bbb"`を中置記法で記述せよ。
+   <details>
+   <summary>解答</summary>
+
+   ```haskell
+   "aaa" `g` "bbb"
+   ```
+</details>
+
+4. `1 /= 2`をポーランド記法で記述せよ。
+   <details>
+   <summary>解答</summary>
+
+   ```haskell
+   (/=) 1 2
+   ```
 </details>
 
 ## 関数は値
