@@ -4,6 +4,10 @@
 <head>
     <title>Haskell入門書テスト</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
+    <script src="./index.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/haskell.min.js"></script>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
@@ -18,11 +22,6 @@
             border-bottom: 1px solid #838B8B;
         }
     </style>
-    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/styles/default.min.css">
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/highlight.min.js"></script>
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.9.0/languages/haskell.min.js"></script>
-    <script>hljs.highlightAll();</script>
-
 </head>
 
 <body>
@@ -124,10 +123,10 @@
     この時、Visual Studio Codeから<tt>Need to download hls-???, continue?</tt>と聞かれた場合、<tt>Yes</tt>を選択しよう。
     そして、下記のサンプルプログラムを入力して、保存しよう。
     Visual Studio Codeのメニューから、<tt>File</tt> → <tt>Auto Save</tt>を選択し、オートセーブを有効にしておくと便利である。
-    <pre><code class="language-haskell">
+    <haskell-code>
 main :: IO ()
 main = putStrLn "Hello World."
-    </code></pre>
+    </haskell-code>
     次に、Visual Studio Codeのメニューから<tt>Terminal</tt> → <tt>New Terminal</tt>を選択する。
     画面下に表示されたPowerShellで、ソースファイルがある場所まで移動し、<tt>stack runhaskell ファイル名.hs</tt>を実行しよう。
     最後に<tt>Hello World.</tt>と出力されたなら、サンプルプログラム実行は成功である。
