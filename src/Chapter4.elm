@@ -58,7 +58,7 @@ chapter4 =
     
     , chaptSubsection "4.1.1 問題"
     , numberList
-        [ problem "数式 \\(1 - 2 + \Bigr (3 \\cdot \\frac{1.0}{25} \Bigr )\\) をHaskellで記述せよ。"
+        [ problem "数式 \\(1 - 2 + \\Bigr (3 \\cdot \\frac{1.0}{25} \\Bigr )\\) をHaskellで記述せよ。"
             [ answerBox
                 [ haskellCode
                     [ "1 - 2 + (3 * 1.0 / 25)"
