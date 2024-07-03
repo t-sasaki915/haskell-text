@@ -53,7 +53,7 @@ lazyImage url alt mdl =
     let fileName = withDefault url (head (reverse (split "/" url))) 
         lazyImageID = "LAZYIMAGE_" ++ fileName in
     if member lazyImageID mdl.loadedLazyImages then
-        details [] [summary [] [text alt], img [src url] []]
+        details [id lazyImageID] [summary [] [text alt], img [src url] []]
 
     else
         details [onClick (LoadLazyImage lazyImageID), id lazyImageID]
