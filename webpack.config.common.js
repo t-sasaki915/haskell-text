@@ -11,7 +11,14 @@ module.exports = {
     optimization: {
         minimize: true
     },
-    module: {},
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"]
+            }
+        ]
+    },
     plugins: [
         new HtmlWebpackPlugin({ template: `${__dirname}/src/index.html` }),
         new CopyWebpackPlugin({patterns: [{ from: "assets", to: "assets" }]})
