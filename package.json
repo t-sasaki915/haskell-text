@@ -22,8 +22,6 @@
         "webpack-merge": "^5.8.0"
     },
     "dependencies": {
-        "highlight.js": "^11.9.0",
-        "katex": "^0.16.11",
         "yarn": "^1.22.22"
     }
 }
