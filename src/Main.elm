@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Chapter1 exposing (chapter1)
 import Chapter2 exposing (chapter2)
+import Chapter3 exposing (chapter3)
 import Component exposing (pageTitle)
 import Core exposing (Msg(..), Model)
 import Util exposing (..)
@@ -31,6 +32,7 @@ view mdl =
     let components = [ pageTitle
                      , chapter1
                      , chapter2
+                     , chapter3
                      ]
     in 
     Document "TSasakiのHaskell入門"

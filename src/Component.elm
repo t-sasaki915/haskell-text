@@ -1,14 +1,14 @@
 module Component exposing (..)
 
 import Core exposing (Msg(..), Model)
-import Util exposing (sequence)
+import Util exposing (sequence, compose)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
-import List exposing (head, reverse, member)
+import List exposing (head, reverse, member, singleton)
 import Maybe exposing (withDefault)
-import String exposing (split)
+import String exposing (split, join)
 
 type alias Component = List (Model -> Html Msg)
 
@@ -24,14 +24,29 @@ chapterTitle title _ = h2 [] [text title]
 chaptSection : String -> Model -> Html Msg
 chaptSection title _ = h3 [] [text title]
 
-hyperlink : String -> String -> Model -> Html Msg
-hyperlink link alt _ = a [href link] [text alt]
+hlink : String -> String -> Model -> Html Msg
+hlink link alt _ = a [href link] [text alt]
 
 dotList : Component -> Model -> Html Msg
 dotList comp mdl = ul [] (mdl |> sequence comp)
 
 listItem : String -> Model -> Html Msg
 listItem content _ = li [] [text content]
+
+snippet : String -> Model -> Html Msg
+snippet content _ = code [] [text content]
+
+haskellCode : List String -> Model -> Html Msg
+haskellCode lines _ = pre [] [code [class "language-haskell"] [text (join "\n" lines)]]
+
+tableContainer : Component -> Model -> Html Msg
+tableContainer comp mdl = table [] (mdl |> sequence comp)
+
+tableHeader : Component -> Model -> Html Msg
+tableHeader heads mdl = tr [] (List.map (compose singleton (th [])) (mdl |> sequence heads))
+
+tableRow : Component -> Model -> Html Msg
+tableRow data mdl = tr [] (List.map (compose singleton (td [])) (mdl |> sequence data))
 
 lazyImage : String -> String -> Model -> Html Msg
 lazyImage url alt mdl =

@@ -5,8 +5,8 @@ import Component exposing (..)
 chapter1 : Component
 chapter1 =
     [ chapterTitle "1 はじめに"
-    , txt "このテキストは、", hyperlink "https://github.com/t-sasaki915" "筆者", txt "のHaskellの理解度を確かめることを主な目的として作成された。"
-    , txt "また、筆者は専門家ではないので、このテキスト内に間違いを見つけた人や、より良い説明を思いついた人は、ぜひ", hyperlink "https://github.com/t-sasaki915/haskell-text" "GitHub", txt "で提案してほしい。"
+    , txt "このテキストは、", hlink "https://github.com/t-sasaki915" "筆者", txt "のHaskellの理解度を確かめることを主な目的として作成された。"
+    , txt "また、筆者は専門家ではないので、このテキスト内に間違いを見つけた人や、より良い説明を思いついた人は、ぜひ", hlink "https://github.com/t-sasaki915/haskell-text" "GitHub", txt "で提案してほしい。"
     , txt "このテキストが誰かのHaskell学習に役立つようなことがあれば、大変うれしく思う。"
 
     , chaptSection "1.1 テキストを読むにあたって"
