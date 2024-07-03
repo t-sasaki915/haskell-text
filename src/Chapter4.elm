@@ -43,7 +43,7 @@ chapter4 =
         , "10.08"
         , "3.0"
         ]
-    , txt "また、多項式や", snippet "( )", txt "を用いた計算の優先順位の指定も可能だ。"
+    , txt "また、式は連結でき、", snippet "( )", txt "を用いた計算の優先順位の指定も可能だ。"
     , haskellCode
         [ "1 + 2 + 3"
         , "1 + 2 - 3 + 4"
@@ -58,7 +58,7 @@ chapter4 =
     
     , chaptSubsection "4.1.1 問題"
     , numberList
-        [ problem "数式 \\(1 - 2 + (3 \\cdot \\frac{1.0}{25})\\) をHaskellで記述せよ。"
+        [ problem "数式 \\(1 - 2 + \Bigr (3 \\cdot \\frac{1.0}{25} \Bigr )\\) をHaskellで記述せよ。"
             [ answerBox
                 [ haskellCode
                     [ "1 - 2 + (3 * 1.0 / 25)"
