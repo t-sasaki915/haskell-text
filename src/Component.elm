@@ -24,11 +24,25 @@ chapterTitle title _ = h2 [] [text title]
 chaptSection : String -> Model -> Html Msg
 chaptSection title _ = h3 [] [text title]
 
+chaptSubsection : String -> Model -> Html Msg
+chaptSubsection title _ = h4 [] [text title]
+
+answerBox : Component -> Model -> Html Msg
+answerBox comp mdl = details []
+    (summary [] [text "解答を表示"] :: (mdl |> sequence comp))
+
+problem : String -> Component -> Model -> Html Msg
+problem prob comp mdl = li []
+    ([text prob, br [] []] ++ (mdl |> sequence comp))
+
 hlink : String -> String -> Model -> Html Msg
 hlink link alt _ = a [href link] [text alt]
 
 dotList : Component -> Model -> Html Msg
 dotList comp mdl = ul [] (mdl |> sequence comp)
+
+numberList : Component -> Model -> Html Msg
+numberList comp mdl = ol [] (mdl |> sequence comp)
 
 listItem : String -> Model -> Html Msg
 listItem content _ = li [] [text content]
