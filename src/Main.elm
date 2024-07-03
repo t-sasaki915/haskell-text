@@ -3,6 +3,7 @@ module Main exposing (main)
 import Chapter1 exposing (chapter1)
 import Chapter2 exposing (chapter2)
 import Chapter3 exposing (chapter3)
+import Chapter4 exposing (chapter4)
 import Component exposing (pageTitle)
 import Core exposing (Msg(..), Model)
 import Util exposing (..)
@@ -33,6 +34,7 @@ view mdl =
                      , chapter1
                      , chapter2
                      , chapter3
+                     , chapter4
                      ]
     in 
     Document "TSasakiのHaskell入門"
