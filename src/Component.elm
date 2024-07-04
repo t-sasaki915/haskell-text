@@ -33,7 +33,7 @@ answerBox comp mdl = details []
 
 problem : Component -> Component -> Model -> Html Msg
 problem prob comp mdl = li []
-    ((mdl |> sequence prob) ++ [br [] []] ++ (mdl |> sequence comp))
+    ((mdl |> sequence prob) ++ br [] [] :: (mdl |> sequence comp))
 
 hlink : String -> String -> Model -> Html Msg
 hlink link alt _ = a [href link] [text alt]
