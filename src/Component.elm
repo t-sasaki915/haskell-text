@@ -31,9 +31,9 @@ answerBox : Component -> Model -> Html Msg
 answerBox comp mdl = details []
     (summary [] [text "解答を表示"] :: (mdl |> sequence comp))
 
-problem : String -> Component -> Model -> Html Msg
+problem : Component -> Component -> Model -> Html Msg
 problem prob comp mdl = li []
-    ([text prob, br [] []] ++ (mdl |> sequence comp))
+    ((mdl |> sequence prob) ++ [br [] []] ++ (mdl |> sequence comp))
 
 hlink : String -> String -> Model -> Html Msg
 hlink link alt _ = a [href link] [text alt]
@@ -48,10 +48,14 @@ listItem : String -> Model -> Html Msg
 listItem content _ = li [] [text content]
 
 snippet : String -> Model -> Html Msg
-snippet content _ = code [] [text content]
+snippet content _ = code [class "snippet"] [text content]
 
 haskellCode : List String -> Model -> Html Msg
 haskellCode lines _ = pre [] [code [class "language-haskell"] [text (join "\n" lines)]]
+
+wrongCode : List String -> Model -> Html Msg
+wrongCode lines _ = pre [] [code [class "language-haskell no-text-colour"]
+    [text (join "\n" lines)]]
 
 tableContainer : Component -> Model -> Html Msg
 tableContainer comp mdl = table [] (mdl |> sequence comp)
